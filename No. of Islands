@@ -1,0 +1,31 @@
+public class NoOfIslands
+{
+  //Returns the number of Islands
+  public int Solution(char[][] grid)
+  {
+    int c=0;
+    for(int i=0;i<grid.length;i++){
+      for(int j=0;j<grid[i].length;j++){
+          if(grid[i][j]=='1'){
+            c+=1;
+            callBfs(grid,i,j);
+            }
+        }
+      }
+     return c;
+   }
+   
+   void callBfs(char[][] grid,int i,int j){
+    //Checking the Boundary Condition
+    if(i<0 || i>grid.length || j<0 || j<grid[i].length)
+      return;
+    //Changing the 1 to 0 , i.e. Land to Water
+    grid[i][j]='0';
+    
+    //Recursive calls to check for horizontal and Vertical Land
+    callBfs(grid,i-1,j);//Up
+    callBfs(grid,i+1,j//Down
+    callBfs(grid,i,j-1)//Left
+    callBfs(grid,i,j+1)//Right
+    }
+}
