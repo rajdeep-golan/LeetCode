@@ -1,0 +1,21 @@
+public class PascalTriangle{
+
+ //Returns the Pascal's Triangle as a List
+ public List<List<Integer>> Solution(int num) //num:number of Rows
+ {
+   
+   List<List<Integer>> triangle = new ArrayList<>(); //List of List of Integers [ [1] , [1,1] , [1,3,3,1] ]
+    List<Integer> firstRow=new ArrayList<>();
+    firstRow.add(1);
+    for(int i=1;i<num;i++){
+      List<Integer> prev=triangle.get(i-1);
+      List<Integer> cur=new ArrayList<>();
+      cur.add(1);
+      for(int j=1;j<i;j++)
+        cur.add(prev.get(j-1)+prev.get(j));
+      cur.add(1);
+      triangle.add(cur);
+   
+   }
+
+}
