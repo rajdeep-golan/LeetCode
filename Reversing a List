@@ -1,0 +1,52 @@
+/* LL Implementation
+public class Node{
+  int data;
+  Node next;
+}
+*/
+public class Reverse{
+  //Function to ONLY print the list in reverse order , does not change the LL
+  public void display(Node head){
+    if(head==null)
+      return;
+    display(head.next);
+    System.out.println(head.data);
+  }
+  
+  //1st Method , Recursion
+  
+  Node p; // Global for all recursive calls
+  public Node solution(Node head){
+   
+   if(head.next==null){
+        p=head;
+        return head;
+      }
+     solution(head.next);
+    
+    Node q=p.next; // q is the previous element ( 1st time it will be the last element )
+     q.next=p;
+    //Instead of above 2 lines ,  we can just write , p.next.next=p; 
+    
+    p.next=null;
+    return head;
+  }     
+  
+  //2nd Method , Iteration
+  
+  public Node solution(Node head){
+    // We use 3 pointers , prev ( initialsed as NULL and finally points at start(head) of reversed LL )
+    // head ( moves from 1st to last element of original LL )
+    // next ( it is the next element to the header )
+    Node prev=null;
+    while(head!=null){
+     Node next=head.next;
+      head.next=prev;
+      prev=head;
+      head=next;
+     }
+     return prev;
+   }
+   
+ }
+    
