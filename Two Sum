@@ -1,0 +1,35 @@
+public class TwoSum{
+
+//Returns the index of the 2 numbers summing upto target , otherwise returns [0,0]
+  public int[] solution(int num[],int target){
+    
+    //1st method : hashing
+    
+    HashMap<Integer,Integer> hs=new HashMap<>();
+    int temp; //Complement variable
+    for(int i=0;i<num.length;i++){
+      temp=sum-num[i];
+      if(hs.containsKey(num[i]))
+          return new int[] { i,hs.get(num[i] };
+      hs.put(num[i],i);
+    }
+   
+    
+    //2nd method : Using 2 pointers  ; Array needs to sorted for this. If not sorted , use , Arrays.sort(num)
+    
+    int sum , ptr1=0,ptr2=num.length-1;
+    while(ptr1<=ptr2){
+      sum=num[ptr1]+num[ptr2];
+      if(sum==target)
+          return new int[] {ptr1,ptr2};
+       else if(sum>target)
+          ptr2-=1;  //We decrement the left pointer
+       else //when sum<target
+          ptr1+=1;
+     }
+     
+     return new int[] {0,0};
+   throw new IllegalArgumentException("No two sum solution");
+   }
+   
+}
