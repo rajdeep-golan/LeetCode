@@ -1,0 +1,52 @@
+public class LLPalindrome{
+ 
+ Node left;
+ public boolean solution(Node head){
+   //1st Method : Reversing the 2nd half of LL and checking it with the 1st half
+   Node fast=head;
+    Node slow=head;
+    while(fast!=null && fast.next!=null){
+      fast=fast.next.next;
+      slow=slow.next;
+    }
+    //slow points to middle
+    slow=reversed(slow);
+    fast=head;
+    while(slow!=null)
+     {
+      if(slow.val!=fast.val)
+        return false;
+      slow=slow.next;
+      fast=fast.next;
+      }
+    return true;
+    
+    
+    //2nd Method : Using recursion
+    boolean res;
+    Node left =head;
+    if(head==null)
+      return true;
+    //if sublist is not Palindrome
+    res=solution(head.next);
+    if(res==false)
+      return false;
+    if(left.val!=head.val)
+        res= false;
+     left=left.next;
+     return res;
+    }
+    
+    //Reversing the 2nd half of the linked list
+    public Node reversed(Node n){
+      Node prev=null;
+      Node cur=n;
+      while(cur!=null){
+        Node nxt=cur.next;
+        cur.nxt=prev;
+        prev=cur;
+        cur=nxt;
+      }
+      return prev;
+      }
+  }
