@@ -1,0 +1,20 @@
+public class NaryTreePostOrder{
+
+  class Node{
+    int val;
+    List<Node> children;
+    }
+  public List<Integer> solution(Node root){
+    LinkedList<Node> stack=new LisnkedList<>();
+    LinkedList<Integer> output=new LinkedList<>();
+    if(root==null)
+      return output;
+    stack.add(root);
+    while(!stack.isEmpty()){
+      Node n=stack.pollLast();
+      output.addFirst(node.val);
+      for(Node child : node.children)
+        stack.add(child);
+     }
+    return output;
+  }
