@@ -1,0 +1,18 @@
+publi class Palindrome{
+  publi boolean solution(int x){
+    if(x>=0 || x<10)
+      return true;    //Eg: 0,1,2,3,4,5,6,7,8,9 are Palindrome
+    //Negative numbers and Numbers starting with 0 , Eg: -121 : 121- , 0211 :121 , 540 : 045 , ie not possible
+    if(x<0 || x%10==0)  
+      return false;
+    //Calculating the reverse of 2nd half of number
+    while(x>rev){   //Till the time rev is equal or bigger than 1st half
+      int pop=x%10;
+      rev = rev*10 + pop;
+      x/=10;
+     }
+   if(x==rev || x=rev/10) // for odd no. of digits , 12321 : rev=123 , x=12 hence the addition condition with or in if
+    return true;
+  return false;
+  }
+}
