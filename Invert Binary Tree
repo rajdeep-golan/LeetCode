@@ -1,0 +1,15 @@
+public class InvertTree
+{
+  class TreeNode{
+    int val;
+     TreeNode left,right;
+     }
+   public TreeNode solution(TreeNode root){
+    if(root==null)
+      return root;    //Either you return null or root , its just the same
+    TreeNode left=solution(root.left);
+    TreeNode right=solution(root.right);
+    root.right=left;
+    root.left=right;
+    }
+  }
