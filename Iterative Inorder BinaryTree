@@ -1,4 +1,8 @@
 public class InorderTraversal{
+ class TreeNode{
+    int val;
+    TreeNode left,right;
+    }
 pubic List<Integer> solution(TreeNode root){
   Stack<TreeNode> s=new Stack<>();
   List<Inteegr> output=new List<>();
@@ -11,7 +15,7 @@ pubic List<Integer> solution(TreeNode root){
       cur=cur.left;   //Move to Left Node
      }
     cur=stack.pop();
-    output.add(cur);    //Print Node , i.e. add to output list
+    output.add(cur.val);    //Print Node , i.e. add to output list
     cur=cur.right;      //Move to Right Node
    }
   reutn output;
