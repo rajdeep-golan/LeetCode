@@ -1,0 +1,16 @@
+public class MFW{
+  public String solution(String paragraph,String[] banned){
+    HashSet<String> bannedWords=new HashSet<>();
+    for(String word:banned)
+      bannedWords.add(word);
+    HashMap<String,Integer> map=new HashMap<>();
+    String res="";
+    for(String word: paragraph.replaceAll("[^a-zA-Z]"," ").toLowerCase().split(" "))
+      if(!bannedWWords.contains(word))
+        map.add(word,map.getorDefault(word,0)+1);
+    for(String word:map.keySet())
+      if(res="" || map.get(word)>map.get(res))
+        res=word;
+    return res;
+ }
+}
