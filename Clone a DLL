@@ -1,0 +1,19 @@
+public class CloneDLL{
+  public Node solution(Node head){
+    HashMap<Node,Node> map=new HashMap<>();
+    Node temp=head;
+    while(temp!=null){
+      clonenode.val=temp.val;
+      map.add(temp,clonenode);
+      temp=temp.next;
+     }
+    temp=head;
+    while(temp!=null){
+      cLonenode.next=temp.next;
+      clone.rnd=temp.rnd;
+      temp=temp.next;
+      clonenode=clonenode.next;
+     }
+     return map.get(head);
+     }
+   }
