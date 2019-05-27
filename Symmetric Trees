@@ -1,0 +1,16 @@
+public class SymmetricTree{
+  public bool solution(Node root){
+    //Making a duplicate tree so that we can check for symmetry
+    return isMirror(root,root);
+   }
+  public bool isMirror(Node t1,Node t2){
+  
+    if(t1==null && t2==null)  //i.e. both are null which means both are equal
+      return true;
+    if(t1==null || t2==null)  //Either t1 is null or t2 is null , i.e. they are different
+      return false;
+    
+    //Value should be equal , 1'st T right = 2nd's Left and 2nd's right = 1'st left
+    return (t1.val==t2.val) && isMirror(t1.left,t2.right) && isMirror(t1.right,t2.left);
+   }
+  }
