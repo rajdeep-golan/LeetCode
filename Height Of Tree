@@ -1,0 +1,6 @@
+public class HeightOfTree{
+  public int solution(Node root){
+    if(root==null)  return 0;
+     return Math.max(solution(root.left),solution(root.right))+1;
+    }
+  }
