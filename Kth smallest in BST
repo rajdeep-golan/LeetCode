@@ -1,0 +1,44 @@
+public  class KthSmallest{
+  class Node{
+    int count, data;
+    Node left,right;
+    }
+  public int solution(Node root,int k){
+    
+    while(root!=null){
+      if(root.count+1 == k)
+      {
+        res=root.data
+        break;
+       }
+       else if(root.count>k){
+        k-=(root.count+1);
+        root=root.right;
+        }
+      else
+        root=root.left;
+       }
+      return res;
+     }
+     Node insertBST(Node r,int data){
+     Node node=new Node();
+     Node root=r;
+     Node root1=r;
+     node.data=data;
+     while(root1!=null){
+      root=root1;
+      if(root1.data < node.data)
+        root1=root1.right;
+      else{
+        root1.count++;
+        root1=root1.left;
+        }
+       }
+      if(r==null)
+        r=node;  //If tree is empty , make it the root 
+      else if(root.data < node.data)
+        root.right=node;
+      else if(root.data > node.data)
+        root.left=node;
+      
+   }
