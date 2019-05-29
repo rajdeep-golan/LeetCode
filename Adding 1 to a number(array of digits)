@@ -1,0 +1,22 @@
+public class Add1{
+  public Vector solution(Vector<Integer> v){
+    int n=v.size();
+    
+    v.set(n-1,v.get(n-1)+1);
+    int carry=v.get(n-1)/10;  //Eg: 9+1=10 , 10/10 = 1 , i.e. Sum = 0(Modulus) , Carry = 1 (Divide)
+    v.set(n-1,v.get(n-1)%10;
+    
+    //Traversing from 2nd last element
+    for(int i=n-1;i>=0;i--){
+      if(carry==1){
+        v.set(i,v.get(i)+1);
+        carry=v.get(i)/10;
+        v.set(i,v.get(i)%10);
+       }
+      }
+     //In the end , i.e. for 1st digit , if we get a carry , we need to add 1
+     if(carry==1)
+      v.add(0,1); //Notice it is add and not set , we SET vector value for all digits and ADD 1 to start(0) position
+     return v;
+    }
+  }
