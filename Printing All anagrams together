@@ -1,0 +1,30 @@
+public class AnagramsTogether{
+  public void solution(String arr[]){
+    HashMap<String,List<Sting>> map=new HashMap<>();
+    
+    //  convert to char array, sort and   then re-convert to string 
+    for(int i=0;i<arr.length;i++){
+     char c[]=arr[i].toCharArray();
+     Arrays.sort(c);
+     String s=new String(c);
+     
+     //If the word is already present in the hashmap
+     if(map.containsKey(s))
+      map.get(s).add(arr[i]); //map.get(s) returns a list (i.e. value of hashmap corresponding to same anagram
+     else{
+      List<String> word=new List<>();
+      word.add(arr[i]);  //Adding the 
+      map.put(s,word)'
+     }
+    }
+     //If only non-anagrams are supposed to be printed , print with size=1
+     for(String s:map.keySet()){
+      if(map.get(s).length > 1)
+        {
+           List<String> l=map.get(s);
+           System.out.println(l);
+          }
+        }
+   } 
+     
+ }
