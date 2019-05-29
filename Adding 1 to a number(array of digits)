@@ -7,7 +7,7 @@ public class Add1{
     v.set(n-1,v.get(n-1)%10;
     
     //Traversing from 2nd last element
-    for(int i=n-1;i>=0;i--){
+    for(int i=n-2;i>=0;i--){
       if(carry==1){
         v.set(i,v.get(i)+1);
         carry=v.get(i)/10;
