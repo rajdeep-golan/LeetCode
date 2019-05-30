@@ -1,0 +1,34 @@
+public class CheckPath{
+  public class TreeNode{
+    int val;
+    TreeNode left,right;
+   }
+  public bool solution(TreeNode root, int sum){
+    if(root==null)
+      return false;
+    Stack<TreeNode> tree=new Stack<>();
+    Stack<Integer> intStack=new Stack<>();
+    
+    tree.add(root);
+    intStack.add(sum-root.val);
+    
+    while(!tree.isEmpty()){
+      TreeNode cur_node=tree.pop();
+      int cur_sum=intStack.pop();
+      
+      if(root.left!=null){
+        tree.add(root.left);
+        intStack.add(root.left.val);
+        }
+        
+      if(root.right!=null){
+        tree.add(root.right);
+        intStack.add(root.right.val);
+        }
+      if(root.left==nul && root.right==null && cur_sum==0)
+        return true;
+      }
+     return false;
+    }
+  }
+       
