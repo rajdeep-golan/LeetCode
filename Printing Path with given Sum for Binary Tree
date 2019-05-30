@@ -1,0 +1,32 @@
+public class PrintPath{
+  public class TreeNode{
+    int val;
+    TreeNode left,right;
+  }
+  
+  //Initially , cur_sum=0 , path<> is null
+  public void soltuion(TreeNode root,int cur_sum,int sum,Vector<Integer> path){
+   //If tree is empty
+   if(root==null)
+      return;
+    
+    cur_sum+=root.val;
+    path.add(root.val);
+    
+    if(cur_sum==sum)    //Printing the path
+    {
+      //Either System.out.println(path); OR
+      for(int i=0;i<path.size();i++)
+        System.out.print(path.get(i));
+      }
+    if(root.left!=null)
+       solution(root.left,cur_sum,sum,path);
+     
+    if(root.right!=null)
+       solution(root.rigth,cur_sum,sum,path);
+       
+    //Poping out element from vector
+    path.remove(path.size()-1);
+    
+   }
+ }
