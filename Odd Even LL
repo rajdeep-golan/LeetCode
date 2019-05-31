@@ -1,0 +1,17 @@
+public class OddEvenSequence{
+  public Node solution(Node root){
+    if(root==null || root.next==null) return root;
+    Node odd=root;
+    Node even=root.next;
+    Node evenHead=even;
+    while(even!=null && even.next!=null){
+      odd.next=even.next;
+      odd=odd.next;
+      even.next=odd.next;
+      even=even.next;
+     }
+     odd.next=eveHead;
+     return root;
+    }
+  }
+      
