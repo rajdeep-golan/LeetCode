@@ -1,0 +1,16 @@
+public class FirstBadVersion{
+  public int solution(int n){   //n is the number of versions
+    int left=0;
+    int right=n;
+    while(left<right){
+      mid=left + (right-left)/2;
+      if(isBoolVersion(mid))    //i.e. if the mid version is Bad version , we check for previous verisons
+        right=mid;
+      else
+        left=mid;
+    }
+    if(left==right && isBoolVersion(left))  return left;
+    
+    return -1;
+   }
+ }
