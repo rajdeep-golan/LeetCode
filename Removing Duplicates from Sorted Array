@@ -1,0 +1,12 @@
+public class RemovingDuplicates{
+  public int solution(int[] nums){
+    
+    int index=1;    // 1st element(i.e. 0th is always unique)
+    for(int i=0;i<nums.length-1;i++)    // We keep nums.length-1 so that we don't go out of bounds while checking with next element
+    {
+      if(nums[i]!=nums[i+1])
+        nums[index++]=nums[i+1];
+      }
+    return index;   //index at last points to the last non-duplicate element
+    }
+  }
