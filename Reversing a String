@@ -1,0 +1,12 @@
+public class ReverseString{
+  public void solution(char[] s){
+    int a=0,b=s.length-1;
+    while(a<=b){
+       int temp=s[a];
+       s[a]=s[b];
+       s[b]=temp;   //Passing address of the 2 letters to be swapped(eg , 1st and last)
+       a+=1;
+      b-=1;
+      }
+  }
+}  
