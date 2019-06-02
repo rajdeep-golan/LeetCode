@@ -1,0 +1,43 @@
+public class BackspaceString
+{
+  public bool solution(String S,String T){
+    int S_ptr=S.length-1 , T_ptr=T.length-1 , S_skip=0,T_skip=0;
+    
+    while(S_ptr>=0 || T_ptr>=0){
+      
+      while(S_ptr>=0){
+        if(S.charAt(S_ptr)=='#'){
+          S_skip+=1;
+          S_ptr-=1;
+         }else if(S_skip>0){
+            S_skip-=1;
+            S_ptr-=1;
+            }
+            else
+              break;
+       }
+       
+      while(T_ptr>=0){
+        if(T.charAt(T_ptr)=='#'){
+          T_skip+=1;
+          T_ptr-=1;
+         }else if(S_skip>0){
+            T_skip-=1;
+            T_ptr-=1;
+            }
+            else
+              break;
+       }
+       if( (S_ptr>=0) != (T_ptr>=0) )   //i.e. They have different length
+        return false;
+       if( S_ptr>=0 && T_ptr>=0 && S.charAt(S_ptr)!=T.charAt(T_ptr))
+        return false;
+        
+        S_ptr--;
+        T_ptr--;
+        
+     }
+     
+     return true;
+   }
+ }
