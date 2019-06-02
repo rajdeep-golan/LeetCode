@@ -1,0 +1,30 @@
+public class NumberOfNodes{
+  public class Tree{
+    int va;
+    Tree left,right;
+  }
+//Following Just returns the number of nodes in a Binary tree , i.e. Number of nodes in Left Subtree + no. of node in Right Subtree + 1(for root)
+  public int solution(Tree node){
+  
+  if(node==null)  return 0;
+    return solution(node.left)+solution(node.right)+1;
+    
+    }
+    
+    public class NTree{
+      int val;
+      List<NTree> child=new List<>();
+    }
+ //Following function returns the number of node > x for a N-ary Tree   
+    public int solution(NTree node,int x){
+      if(node==null)  return 0;
+      int count=0;
+      if(node.val>x)  count++;
+      for(int i=0;i<Node.child.size();i++)
+        {
+           NTree c=Node.child[i];
+           count=count+solution(c,x);
+          }
+       return count;
+      }
+   }
