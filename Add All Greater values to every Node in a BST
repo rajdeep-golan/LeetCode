@@ -1,0 +1,12 @@
+public class AddAllNodeBST{
+  int sum=0;
+  public void solution(Tree node){
+    if(node==null)  return;
+    
+    solution(node.right);
+    sum+=node.val;
+    node.val=sum;
+    
+    solution(node.left);
+  }
+}
