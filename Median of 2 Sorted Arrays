@@ -1,0 +1,31 @@
+public class Median{
+  public double solution(int[] n1,int[] n2){
+    if(n1.length>n2.length)
+      solution(n2,n1);    //To ensure that 1st array is smaller in length than 2nd array
+    int x=n1.length;
+    int y=n2.length;
+     int low=0,high=x;
+     while(low<=high){
+      partX=(low+high)/2;
+      partY=(x+y+1)/2-partX;    // partX+partY=(x+y+1)/2  , +1 to handle odd case
+      int maxLX= partX==0?INTEGER.MIN:n1[partX-1];
+      int minRX= partX==x?INTEGER.MAX:n1[partX];
+      
+       int maxLY= partY==0?INTEGER.MIN:n1[partY-1];
+      int minRY= partY==y?INTEGER.MAX:n1[partY];
+      
+      if(maxLX<=minRY && maxLY<=minRX){
+        if((x+y)%2==0)
+          return (double)(Math.max(maxLX,maxLY)+Math.min(minRX,minRY))/2;
+        else
+           return (double)Math.max(maxLX,maxLY);
+        }
+      if(maxLX>minLY)
+        high=partX-1;
+      else
+        low=partX+1;
+      }
+      //It will come here only if the 2 sorted arrays are not sorted
+      throw new IllegalArgumentException();
+    }
+  }
