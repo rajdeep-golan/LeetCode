@@ -1,0 +1,60 @@
+public class LongestPalindrome{
+//We can do it in Brute Force Method , takes O(N^3)
+//Dynamic Programming gives us a solution of O(N^2) 
+public String solution(String s){
+  int begin=0,max=1; 
+  boolean p[][]=new int[s.length()][s.length()];
+  
+  //for 1 character Palindrome
+  for(int i=0;i<s.length();i++)
+    p[i][i]=true;
+    
+  //for 2 letter palimdromes
+  for(int i=0;i<s.length()-1;i++)
+    {
+      if(s.charAt(i)==s.charAt(i+1);
+        { p[i][i+1]=true;max=2;begin=i;}
+       }
+   
+   //for 3 or longer length palindrome
+   for(int cur_len=3;cur_len<=s.length();cur_len++){
+    for(int i=0;i<n-(cur_len+1);i++){
+      int j=i+cur_len-1;    //j is the last character
+      if(s.charAt(i)==s.charAt(j) //1st and last charater same
+        &&
+          p[i+1][j-1]==true)  //Rest of substring same
+          {
+            p[i][j]=true;
+            max=cur_len;
+            begin=i;
+            }
+          }
+        }
+      return s.substring(begin,max+1);
+     }
+
+//We try to optimise our solution to O(N)
+  public String solution(String s){
+    int p[]=new int[s.length()];    // s is the string of odd length It's easy for ODD length of Strings , but for even count, we need to add characters("eg'#',or'$') between each character to make it a length of 2n-1 (eg: abaab become #a#b#a#a#b#)
+    int c=0,r=0;  //c is the center of the longest expanded Palindrome , r is the right limit of the current Palindrome
+    
+    for(int i=0;i<s.length();i++){
+      //i is the centre of current expanding Palindrome
+      int mirr=2*c-1; //Mirror image of current element
+      if(i<r) //i.e. if new centre lies between longest Palindrome's right boundary
+        p[i]=Math.min(p[mirr],r-i);   //Atleast(Greater than or equal to hence MINIMUM) value of mirror or boundary - current center
+      while(s[i+(1+p[i])] == s[i-(1+p[i])]) //Checking (EXPANDING) about centre(i)
+        p[i++];
+      if(i+p[i]>r)
+        {
+           c=i;
+           r=i+p[i];
+          }
+     }
+     System.out.println("Maximum Length = "+ p[c]);
+     return s.substring(c-p[c]/2,r+1);
+   }
+ }
+          
+       
+          
