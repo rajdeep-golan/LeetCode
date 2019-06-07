@@ -1,0 +1,20 @@
+public class SquareOfSortedArray{
+  public int[] solution(int[] nums){
+    int nP,pP,n=nums.length;
+    while(pP<n && nums[pP]<0)
+      pP++;
+    nP=pP-1;
+    int A[]=new int[n];int c=0;
+    while(nP<n && nN>0){
+      if(Math.pow(nums[nP],2)<Math.pow(nums[nN],2){
+        A[c++]=Math.pow(nP],2);nP++;}
+      else{
+        A[c++]=Math.pow(nums[nN]);nN--;}
+    }
+    while(nN>=0)
+      A[c++]=Math.pow(nums[nN--]);
+    while(nP<n)
+      A[c++]=Math.pow(nums[nP++]);
+    return A;
+   }
+ }
