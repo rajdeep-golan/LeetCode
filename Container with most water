@@ -1,0 +1,17 @@
+public class MostWater{
+  public int solution(int[] height){
+    int aptr=0,bptr=height.length-1,area=0;
+    while(aptr<bptr){
+      //We choose the less height line 
+      if(height(aptr]<height[bptr]){
+        area=Math.max(area,height[aptr]*(bptr-aptr));
+        aptr++;
+        }
+      else{ //when bptr <= aptr  
+        area=Math.max(area,height[btr]*(bptr-aptr));
+        bptr--;
+        }
+      }
+    return area;
+  }
+}
