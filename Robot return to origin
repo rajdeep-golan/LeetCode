@@ -1,0 +1,14 @@
+public class RobotReturn{
+  public boolean solution(String moves){
+    int x=0,y=0;
+    for(char move:moves.toCharArray()){
+      switch(move){
+        case 'U': y++;break;
+        case 'L':x--;break;
+        case 'D':y--;break;
+        case 'R':x++;break;
+      }
+    }
+   return (x==0 && y==0);
+  }
+}
