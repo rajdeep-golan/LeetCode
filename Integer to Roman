@@ -1,0 +1,22 @@
+public class IntegerToRoman{
+  public String solution(int value){
+  
+    if(value>3999 || value<1) throw new IllegalArgumentException;
+    
+    String[] s=new String[]{"M","CM","D","CD","C","XC","L","XL","X","IX","V","IV","I"}; //In decreasing order
+    int[] n=new int[]{1000,900,500,400,100,90,50,40,10,9,5,4,1};
+    
+    StringBuilder result=new StringBuilder();
+    int i=0;
+    while(value>0){
+      if(value-n[i]>=0)
+        {
+          result.append(s[i]);
+          value=value-n[i];
+         }
+        else
+          i++;
+       }
+     return result.toString;
+    }
+  }
