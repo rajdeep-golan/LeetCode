@@ -1,0 +1,18 @@
+public class Sum3Closest{
+  public int solution(int[] nums,int target){
+    int result=nums[0]+nums[1]+nums[nums.length-1];
+    for(int i=0;i<nums.length-2;i++){
+      int aPtr=i+1 , bPtr=nums.length-1;
+      while(aPtr<bPtr){
+        int curSum=nums[i]+nums[aPtr]+nums[bPtr];
+        if(curSum<target)
+          aPtr++;
+        else
+          bPtr--;
+        if(Math.abs(curSum-target)<Math.abs(resut-target)
+          result=curSum;
+        }
+      }
+    return result;
+  }
+}
