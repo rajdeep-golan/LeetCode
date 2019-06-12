@@ -1,0 +1,8 @@
+public class RememberMe{
+  public void solution(int x){
+    System.out.println(x+",");
+    if(x<20000)
+      solution(2*x);
+    System.out.println(x+",");
+   }
+ }
