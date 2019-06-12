@@ -1,0 +1,22 @@
+public class StackFromQueue{
+  public void push(int x){
+    //First we enqueue the element then dequeue and again enqueue rest of the elements back to the queue Eg. We want to push 6 in 1,2,3,4,5 ; so we enqueue 6 , we get 1,2,3,4,5,6 ; then dequeue 1 and enqueue 1 , 2,3,4,5,6,1 ; the 2 , 3,4,5,6,1,2 ; Finally we get 6,1,2,3,4,5
+    int n=q.size; //To get size of queue before adding the new element
+    q.enqueu(x);
+    for(int i=0;i<n;i++){
+      q.enqueue(q.dequeue()); //i.e. we pop an element and put it at the beginning
+     }
+   }
+  public int pop(){
+    if(q.isEmpty())
+      System.out.println("Empty Stack!");
+    else
+      return q.dequeue();
+    }
+    public boolean isEmpty(){
+      return q.isEmpty();
+    }
+   public int top(){
+    return q.front();
+   }
+ }
