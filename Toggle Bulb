@@ -1,0 +1,6 @@
+public class Bulb{
+  public int solution(int n)  // n:No. of bulbs , initially OFF
+  {
+    return (int)Math.sqrt(n);
+   }
+ }
