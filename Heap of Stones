@@ -1,0 +1,7 @@
+public class Game{
+  public boolean solution(int n,int k){
+    //I can never win if the number of stones is divisible by Max. no. of stones to be picked
+    //Eg:n%4!=0 , if no. of stones is 4 and maximum a person can pick 3(1,2 or 3) stones at a time(k=3), i.e. 4%4=0 , if condition is falseYou can never win the game, otherwise you have chance to win the game
+    return (n%(k+1)!=0);    //n:No. of Stones , k:Maximum no. of stones a player can pick at any time.
+   }
+  }
