@@ -1,0 +1,16 @@
+public class TwoStringSubstring{
+  public boolean solution(String s1,String s2){
+    int[] map=new int[26];
+    for(char ch : s1.toCharArray())
+      map[ch-'a']++;
+    for(int i=0,start=0;i<s2.length();i++){
+      char ch=s2.charAt(i);
+      if(--map[ch-'a']<0)
+        while(map[ch-'a']!=0)
+          map[s1.charAt(start++)]++;
+      else if(i-start+1==s1.length())
+        return true;
+     }
+     return false;
+   }
+}
