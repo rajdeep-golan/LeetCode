@@ -9,7 +9,7 @@ public class SwapNodes{
       first.next=second.next;
       cur.next=second;
       cur.next.next=first;
-      cur=cur.next;
+      cur=cur.next.next;
      }
     return temp.next;
   }
