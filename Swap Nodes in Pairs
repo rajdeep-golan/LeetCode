@@ -1,0 +1,16 @@
+public class SwapNodes{
+  public Node soltuion(Node head){
+    Node temp;
+    temp.next=head;
+    Node cur=temp;
+    while(cur.next!=null && cur.next.next!=null){
+      Node first=cur.next;
+      Node second=cur.next.next;
+      first.next=second.next;
+      cur.next=second;
+      cur.next.next=first;
+      cur=cur.next;
+     }
+    return temp.next;
+  }
+}
