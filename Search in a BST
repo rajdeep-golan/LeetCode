@@ -1,0 +1,13 @@
+public class SearchBST{
+//We return the subtree with the given search key(n) as a root. If the search key isn't found ,  we return null
+  public Node solution(Node root,int n){
+    if(root==null)
+      return root;
+    if(root.val==n)
+      return root;
+    if(root.val>n)
+      return solution(root.left,n);
+    else if(root.val<n)
+      return solution(root.right,n);
+    }
+  }
