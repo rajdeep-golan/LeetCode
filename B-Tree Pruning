@@ -1,0 +1,24 @@
+public class BTreePruning{
+  //Tree contains nodes with value only = 0 or 1
+  public Node solution(Node root){
+    if(root==null)
+      return null;
+    contains1(root);
+    return root;
+  }
+  
+  public boolean contains1(Node node){
+    if(node==null)
+      return null;
+    boolean left_node=contains1(node.left);
+    boolean right_node=contains1(node.right);
+    
+    //If left(or right) node doesn't contain 1 , we remove that subtree
+    if(!left_node)
+      node.left=null;
+    if(!right_node)
+      node.right=null;
+    
+    return node.val==1 || left_node || right_node;
+  }
+}
