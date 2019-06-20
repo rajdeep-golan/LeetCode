@@ -1,0 +1,20 @@
+public class MaxInARow{
+  public List<Integer> solution(Node root){
+    List<Integer> result=new ArrayList<>();
+    maximumLevel(result,root,0);
+    return result;
+  }
+  
+  public void maximumLevel(List result,Node node,int level){
+    if(node==null)
+      return;
+    //If the current node is the first element in the row(level) , then we add this node to the list in the current level position
+    if(result.size()==level)
+      result.add(node.val);   //node added in position = level
+    else
+      result.set(level,Math.max(result.get(level),node.val));
+    //Recursively calling the left and the right subtree
+    maximumLevel(result,node.left,level+1);
+    maximumLevel(result,node.right,level+1);
+    }
+ }
