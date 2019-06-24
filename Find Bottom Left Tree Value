@@ -1,0 +1,30 @@
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    public int findBottomLeftValue(TreeNode root) {
+        
+        //Queue is an Abstract class hence we need to instantiate its object using LinkedList contructor
+        Queue<TreeNode> q=new LinkedList();
+        q.offer(root);  //OR q.add(root)
+        
+        //Usually we traverse the Ledt subtree first and then Right, but here 
+        // we first traverse the right subtree and then the left so that when we poll last , i.e. dequeue the last element , we get the left most node of last row
+        while(!q.isEmpty()){
+            //We keep updating the root with the element polled(removed from Queue)
+            root=q.poll();  //OR root=q.remove()
+            if(root.right!=null)
+                q.offer(root.right);    //OR q.add(root.right)
+            if(root.left!=null)
+                q.offer(root=root.left);
+        }
+        //By the end , the root contains the final value
+        return root.val;
+    }
+}
