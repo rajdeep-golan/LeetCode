@@ -1,0 +1,25 @@
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    //The fact is the number of moves required = absolute Value of the node value -1 ( eg: suppose node value is 4 , it means no. of moves req. = 4-1 , OR if node value = 0 , no. of moves req. = 0-1 = 1 (not -1 , since we are taking absolute value)
+    int moves;
+    public int distributeCoins(TreeNode root) {
+     moves=0;
+    dfs(root);
+        return moves;
+    }
+    public int dfs(TreeNode node){
+        if(node==null)  return 0;
+        int l=dfs(node.left);
+        int r=dfs(node.right);
+        moves+=Math.abs(l)+Math.abs(r);
+        return node.val-1+l+r;
+    }
+}
