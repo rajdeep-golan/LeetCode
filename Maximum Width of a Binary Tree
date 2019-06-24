@@ -1,0 +1,32 @@
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    int width;
+    Map<Integer,Integer> left_map;  //hashmap for depth to position
+    public int widthOfBinaryTree(TreeNode root) {
+       left_map=new HashMap();
+        width=0;
+        getwidth(root,0,0); //depth = 0 , position = 0 for root
+        
+        return width;
+    }
+    public void getwidth(TreeNode node,int depth,int position){
+        
+        if(node==null)  return ;
+        //We only add the leftmost node in a level to the map , i.e. if other nodes arrive at this line , left_map will not add anything as it already contains a value corresponding to that depth(which is the leftmost node) 
+        left_map.computeIfAbsent(depth,x->position);    //x is an arbitaryy variable , here x is set to position and then left_map contains x corresponding to depth key
+        //since difference between the position will give us 1 less than the width hence we add 1 , eg: 5-4=1 (where 5 and 4 are positions) , but width should be 2 , hence we add 1 
+        //for every other node(i.e. nodes other than the leftmost node in a depth) we check if the current width is > width calculated so far
+        width=Math.max(width,position-left_map.get(depth)+1);
+        //We are calling the left child(subtree) first , hence left_map will only contain the leftmost nodes 
+        getwidth(node.left,depth+1,position*2); //Left child is 2*i , where i is index of parent
+        getwidth(node.right,depth+1,position*2 + 1);    //Right child is 2*i + 1 
+    }
+}
