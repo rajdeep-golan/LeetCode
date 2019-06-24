@@ -1,0 +1,48 @@
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ Input
+   1
+   / \
+  2   5
+ / \   \
+3   4   6
+The flattened tree should look like:
+
+1
+ \
+  2
+   \
+    3
+     \
+      4
+       \
+        5
+         \
+          6
+ */
+class Solution {
+    public void flatten(TreeNode root) {
+        //Basically we are making the left of all roots as null and assigning only the right child
+        if(root==null)  return;
+        Stack<TreeNode> s=new Stack();
+        s.push(root);
+        
+        while(!s.isEmpty()){
+            TreeNode node=s.pop();
+            //We push the right child first because we want the left child to pop first(i.e. get added to LL)
+            if(node.right!=null)
+                s.push(node.right);
+            if(node.left!=null)
+                s.push(node.left);
+            if(!s.isEmpty())        //EG: for the first time , stack won't be empty , it will have 5,2
+                node.right=s.peek();    //we set 1.right = 2    Since 1 is current node and 2 is peek from stack
+            node.left=null;
+        }
+    }
+}
