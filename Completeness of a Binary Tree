@@ -1,0 +1,30 @@
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    public boolean isCompleteTree(TreeNode root) {
+    //We do a level order traversal , if we find a null value , that should be our end, if we find any node after a null value , it means it's not a complete tree
+        Queue<TreeNode> q=new LinkedList();
+        boolean ans=false;  
+        q.offer(root);
+        
+        while(!q.isEmpty()){
+            TreeNode node=q.poll();
+            if(node==null)      //It means we arrive at our first null , so this should be end of tree
+                ans=true;
+            else{
+                if(ans==true)
+                    return false;   //i.e. We found a null already and this node is coming after some null node , hence the tree is not complete
+                q.offer(node.left);
+                q.offer(node.right);
+            }
+        }
+        return ans;
+    }
+}
