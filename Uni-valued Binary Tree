@@ -1,0 +1,30 @@
+class Solution {
+//Method 1 : Take a list and store all the node values in a DFS(depth-first-search and then check the list if all the values are equal to the value in first position of the root
+    List<Integer> vals;
+    public boolean isUnivalTree(TreeNode root) {
+        vals = new ArrayList();
+        dfs(root);
+        for (int v: vals)
+            if (v != vals.get(0))
+                return false;
+        return true;
+    }
+
+    public void dfs(TreeNode node) {
+        if (node != null) {
+            vals.add(node.val);
+            dfs(node.left);
+            dfs(node.right);
+        }
+    }
+    
+    //Method 2 : Using Recursion
+       public boolean isUnivalTree(TreeNode root) {
+       //Check if Left side is same(i.e either it is null(end) or it is same as root AND left subtree is also same
+        boolean left= root.left==null || root.val==root.left.val && isUnivalTree(root.left);
+        //Similarly check for right side
+        boolean right=root.right==null || root.val==root.right.val && isUnivalTree(root.right);
+        //we return true if both left and right are same as root
+        return left && right;
+    }
+}
