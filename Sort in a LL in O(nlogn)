@@ -1,0 +1,45 @@
+public class SearchLL{
+  public Node solution(Node head){
+    if(head==null || head.next==null)
+      //Already sorted since contains 0 or 1 node
+      return head;
+    Node temp=head;
+    Node fast=head;
+    Node slow=head;
+    while(fast!=null && fast.next!=null){
+      temp=slow;
+      slow=slow.next;
+      fast=fast.next.next;
+    }
+    
+    // Till here we will get slow : start of 2nd half , fast : end of 2nd half , temp : end of 1st half ; and we already have head as the start of 1st half
+    // We basically do Merge sort by calling it recursively for all the halves
+    
+    Node left = solution(head);
+    Node right = solution(slow);
+    
+    return merge(left,right);
+   }
+  public Node merge(Node l1,Node l2){
+    Node sorted_Temp=new Node(0);
+    Node cur=sorted_Temp;
+    
+    while(l1!=null && l2!=null){
+      if(l1.val < l2.val)
+        cur.next=l1.next;
+      else
+        cur.next=l2.next;
+      cur=cur.next;
+     }
+     if(l1!=null){
+      cur.next=l1;
+      l1=l1.next;
+      }
+     if(l2!=null){
+      cur.next=l2;
+      l2=l2.next;
+     }
+     return sorted_Temp.next;
+   }
+ }
+     
