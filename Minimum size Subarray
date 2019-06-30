@@ -1,0 +1,18 @@
+class MinimumSize {  
+  public int solution(int[] nums,int s) //s is the required sum
+  {
+    int left=0; //stores the left position of our subarray
+    int result=Integer.MAX_VALUE;
+    int sum=0;
+    
+    for(int i=0;i<nums.length;i++){
+      sum+=nums[i];
+      
+      while(sum>=s){  //if we get a sum of subarray >= s
+        result=Math.min(result,i+1-left); //We do i+1 only because of 0 base index
+        sum-=nums[left++];  //We decrement our sum with the left position's element , then move the left pointer ahead , i.e. we actually Move our subarray forward by removing the intial element each time
+       }
+     }
+    return (result!=Integer.MAX_VALUE) ? result : 0;  //Ternary condition just to check if result acutally changed as we need to return 0 if no such subarray is found
+  }
+}
