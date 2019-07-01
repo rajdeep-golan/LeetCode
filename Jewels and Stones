@@ -1,0 +1,13 @@
+public class JewelsAndStones{
+  public int soltuion(String j,String s){
+  // J: each character is a jewel ; S : each character is a stone
+    int no_of_jewels=0;
+    
+    for(int i=0;i<s.length();i++){
+      if(j.indexOf(s.charAt(i))>-1)
+        no_of_jewels++;
+     }
+     
+     return no_of_jewels;
+   }
+ }
