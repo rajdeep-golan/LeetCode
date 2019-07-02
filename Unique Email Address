@@ -1,0 +1,16 @@
+class NumUniqueEmails {
+    public int solution(String[] emails) {
+        HashSet<String> h=new HashSet();  //Since hashset only contains unique values
+        for(String email:emails){
+            int p=email.indexOf('@');
+            String l=email.substring(0,p);
+            String hn=email.substring(p);
+            if(l.contains("+"))
+                l=l.substring(0,l.indexOf('+'));
+            if(l.contains("."))
+                l=  l.replaceAll("\\.",""); // we do "\\." since . is a special character , hence we have to escape it
+            h.add(l+hn);
+        }
+        return h.size();
+    }
+}
