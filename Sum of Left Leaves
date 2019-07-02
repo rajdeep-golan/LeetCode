@@ -1,0 +1,27 @@
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class SumOfLeftLeaves {
+    public int solution(TreeNode root) {
+        if(root==null)  return 0;
+        int sum=0;
+        if(root.left!=null){
+            if(root.left.left==null && root.left.right==null)   //i.e. left child of root is a leaf
+                sum+=root.left.val;
+            else    //left child of root is not a leaf
+                sum+=solution(root.left);    //We recursively call the function on left child
+        }
+        if(root.right!=null){
+            if(root.right.left!=null || root.right.right!=null)
+                sum+=solution(root.right);
+            //We don't care if right child of root is a leaf , if the right child has children(or a child) ,then we recurse on it 
+        }
+        return sum;
+    }
+}
