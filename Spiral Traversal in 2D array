@@ -1,0 +1,49 @@
+/* Input:
+[
+  [1, 2, 3, 4],
+  [5, 6, 7, 8],
+  [9,10,11,12]
+]
+Output: [1,2,3,4,8,12,11,10,9,5,6,7]
+*/
+
+class spiralOrder {
+    public List<Integer> solution(int[][] matrix) {
+        List<Integer> ans=new ArrayList();
+        
+        if(matrix.length==0)    return ans;
+ 
+        //We are taking boundary values
+        int rowStart=0;
+        int rowEnd=matrix.length-1; //we are considering for indices , hence -1
+        int colStart=0;
+        int colEnd=matrix[0].length-1;
+        while(rowStart<=rowEnd && colStart<=colEnd){
+            //taking all values in starting row , i.e rowStart and column from colStart to colEnd
+            for(int i=colStart;i<=colEnd;i++)
+                ans.add(matrix[rowStart][i]);   //Taking starting row
+            rowStart++; //Since we will never visit that row again
+            
+            //taking all values in last column , i.e. colEnd and row from rowStart to rowEnd (Since we are moving down)
+            
+            for(int i=rowStart;i<=rowEnd;i++)
+                ans.add(matrix[i][colEnd]);
+            colEnd--;   //we will never visit last column again
+            
+            //taking all values in last row , i.e. rowEnd and column from colEnd to colStart (Since we are moving right to left)
+            if(rowStart<=rowEnd)    //Checking again since we changed rowStart
+            for(int i=colEnd;i>=colStart;i--)
+                ans.add(matrix[rowEnd][i]);
+            rowEnd--;   //we will never visit this last row again
+            
+            //taking values in first column , i.e. colStart and row from rowEnd to rowStart (Since we are moving down to up)
+            if(colStart<=colEnd)    //Checking again since we changed colEnd
+            for(int i=rowEnd;i>=rowStart;i--)
+                ans.add(matrix[i][colStart]);
+            colStart++; //we will never visit this start colummn again
+            
+        }
+        
+        return ans;
+    }
+}
