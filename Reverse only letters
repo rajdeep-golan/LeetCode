@@ -1,0 +1,35 @@
+class ReverseOnlyLetters {
+//Method 1: Using reverse pointer
+    public String solution(String S) {
+        int j=S.length()-1; //j is the reverser pointer
+        StringBuilder s=new StringBuilder();
+        for(int i=0;i<S.length();i++){
+            if(Character.isLetter(S.charAt(i)))
+            {
+                while(!Character.isLetter(S.charAt(j)))
+                    j--;
+                s.append(S.charAt(j--));
+            }
+            else
+                s.append(S.charAt(i));
+        }
+        return s.toString();
+    }
+    //Method 2: Using Stack , just the same as above , except that we first add all the letter(NOTE: only letters) to the stack and in the next loop we add letters from stack if string contains a letter, otherwise we add the symbol itself
+    public String solution(String S) {
+      Stack<Character> s=new Stack();
+      //Adding letters to the stack
+        for(int i=0;i<S.length();i++)
+            if(Character.isLetter(S.charAt(i)))
+                s.push(S.charAt(i));
+        StringBuilder ans=new StringBuilder();
+        
+        if letter found , then we pop from stack and add to answer , otherwise(i.e. if symbol found , we place the symbol in the same position in the answer
+        for(int i=0;i<S.length();i++)
+            if(Character.isLetter(S.charAt(i)))
+                ans.append(s.pop());
+            else 
+                ans.append(S.charAt(i));
+        return ans.toString();
+    }
+}
