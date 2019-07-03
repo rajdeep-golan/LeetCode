@@ -1,0 +1,39 @@
+class generateMatrix {
+    public int[][] solution(int n) {
+        int ans[][]=new int[n][n];
+        if(n==0)    return ans;
+        int k=1;
+ 
+        //We are taking boundary values
+        int rowStart=0;
+        int rowEnd=n-1; //we are considering for indices , hence -1
+        int colStart=0;
+        int colEnd=n-1;
+        while(rowStart<=rowEnd && colStart<=colEnd){
+            //taking all values in starting row , i.e rowStart and column from colStart to colEnd
+            for(int i=colStart;i<=colEnd;i++)
+                ans[rowStart][i]=k++;   //Taking starting row
+            rowStart++; //Since we will never visit that row again
+            
+            //taking all values in last column , i.e. colEnd and row from rowStart to rowEnd (Since we are moving down)
+            
+            for(int i=rowStart;i<=rowEnd;i++)
+                ans[i][colEnd]=k++;
+            colEnd--;   //we will never visit last column again
+            
+            //taking all values in last row , i.e. rowEnd and column from colEnd to colStart (Since we are moving right to left)
+            if(rowStart<=rowEnd)    //Checking again since we changed rowStart
+            for(int i=colEnd;i>=colStart;i--)
+                ans[rowEnd][i]=k++;
+            rowEnd--;   //we will never visit this last row again
+            
+            //taking values in first column , i.e. colStart and row from rowEnd to rowStart (Since we are moving down to up)
+            if(colStart<=colEnd)    //Checking again since we changed colEnd
+            for(int i=rowEnd;i>=rowStart;i--)
+                ans[i][colStart]=k++;
+            colStart++; //we will never visit this start colummn again
+            
+        }
+        return ans;
+    }
+}
