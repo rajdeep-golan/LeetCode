@@ -1,0 +1,10 @@
+// Array contains elements that are in pair(2 frequency) except one number , find that number
+class SingleNumber{
+  public int soltuion(int[] nums){
+    int res=0;
+   //a XOR a = 0 ; a XOR 0 = a , so for duplicates , we get 0 , as we get single number, the answer is that number , a XOR b XOR a = b
+   for(int i:nums)
+      res ^= i; // ^ is XOR
+    return res;
+  }
+}
