@@ -1,0 +1,31 @@
+/*
+Input: ["bella","label","roller"]
+Output: ["e","l","l"]
+*/
+
+class CommonChars {
+    public List<String> solution(String[] A) {
+        List<String> l=new ArrayList();
+        //We take the frequency of each character in each string , and our answer contains the minimum frequency of each character among all the strings
+        
+        int[] freq=new int[26];     //Instead of hashMap(as for strings) we jsut take an array
+        Arrays.fill(freq,Integer.MAX_VALUE);
+        for(String a:A){
+            int f[]=new int[26];
+            for(char c:a.toCharArray()){
+                f[c-'a']++;
+            }
+            
+            for(int i=0;i<26;i++)
+                freq[i]=Math.min(freq[i],f[i]);
+        }
+        for(int i=0;i<26;i++){
+            //For multiple(duplicate characters)
+            while(freq[i]>0){
+                l.add(""+(char)(i+'a'));
+                freq[i]--;  //Decreasing the frequency each time we add a character to our answer
+            }
+        }
+        return l;
+    }
+}
