@@ -1,0 +1,11 @@
+public class DeleteNode{
+  public Node solution(Node node){
+  //We swap the current node's data with it's immidiate next node's data and finally free that next node
+    Node temp=node.next;
+    node.data=temp.data;
+    node.next=temp.next;
+    temp=null;
+    return node;
+  }
+}
+    
