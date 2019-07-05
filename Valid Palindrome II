@@ -1,0 +1,29 @@
+public class ValidPalindrome{
+  public boolean solution(String s){
+    int a=0;
+    int b=s.length()-1;
+    
+    while(a<=b){
+      if(s.charAt(a)!=s.charAt(b))
+      // aaaabaaabcaaaa , then we chop off as baaabc to aaabc and baaab 
+      //We chop off the string and see if after eliminating a character , do we get a palindrome
+      //We check either the left cut substring OR the right cut substring is a palindrome or not 
+        return helperMethod(s,a,b-1) || helperMethod(s,a+1,b);
+      a++;
+      b--;
+     }
+     return true;
+   }
+   //Same as above(i.e for finding a palindrome of the substring)
+   public boolean helperMethod(String s,int i,int j){
+    int a=i;
+    int b=j;
+    
+    while(a<=b){
+      if(s.charAt(a)!=s.charAt(b))
+        return false;
+      a++;
+      b--;
+     }
+     return true;
+   }
