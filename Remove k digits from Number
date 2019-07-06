@@ -1,0 +1,43 @@
+//We are supposed to remove k digits from a given number (in the form of a string) in such a way that we get smallest possible number
+//We are following Greedy Algorithm here
+class RemoveKdigits {
+    public String solution(String num, int k) {
+        if(k==0)    return num;
+        if(k==num.length()) return "0"; //we can remove all the elements , hence we are left with nothing so result is 0
+        
+        //We push the digits in a stack
+        Stack<Character> stack=new Stack();
+       
+        
+        for(char c:num.toCharArray()){
+        //While pushing , we see if the TopOfStack is greater than current digit , then we can remove that digit (i.e. pop from stack)
+           while(!stack.isEmpty() && stack.peek() > c && k>0)
+           { 
+                k--;
+                stack.pop();
+           }
+            
+            stack.push(c);
+                
+        }
+        
+        //If we have "1111" , then this will push all the characters into the stack and eliminate none , so for that 
+        while(k>0){
+            stack.pop();
+            k--;
+        }
+        StringBuilder s=new StringBuilder();
+        
+        //Our stringBuilder will have the number in reverse order , hence we'll have to reverse it ,since as per the property of stack , we get elements in reverse order
+        while(!stack.isEmpty()){
+            s.append(stack.pop());
+        }
+        s.reverse();
+        
+        //If we have leading zeros , eg: "00023" should be "23"
+        while(s.length()>1 && s.charAt(0)=='0')
+            s.deleteCharAt(0);
+            
+        return s.toString();
+    }
+}
