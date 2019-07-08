@@ -1,0 +1,18 @@
+class Rotate {
+    public void solution(int[][] matrix) {
+    
+    //We first reverse the array(i.e. the 1st row becomes the last row , 2nd row becomes 2nd last row ... and last row becomes the 1st row
+        Collections.reverse(Arrays.asList(matrix));
+        
+        //after reversing the rows , now we take the transpose of result , this will give us an array which is rotated by 90degree
+        for(int i=0;i<matrix.length;i++)
+            for(int j=0;j<i;j++)
+            {
+                int t=matrix[i][j];
+                matrix[i][j]=matrix[j][i];
+                matrix[j][i]=t;
+            }
+    }
+    
+    
+}
