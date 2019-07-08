@@ -1,0 +1,26 @@
+class maxAreaOfIsland {
+
+//Similar to No. of island Question OR Word Search in 2d array problem
+    boolean seen[][];
+    public int solution(int[][] grid) {
+        int maxA=0;
+        seen=new boolean[grid.length][grid[0].length];
+        for(int i=0;i<grid.length;i++)
+            for(int j=0;j<grid[i].length;j++)
+                if(grid[i][j]==1)
+                    maxA=Math.max(maxA,area(grid,i,j));
+        return maxA;
+    }
+    public int area(int[][] grid,int i,int j ){
+    
+    //Boundary checks(i,j) , current no. to be 0 , already seen , then we return 0
+        if(i<0 || i>=grid.length || j<0 ||j>=grid[0].length || grid[i][j]==0 || seen[i][j])
+            return 0;
+        //Turn 1 to 0
+        grid[i][j]=0;
+        //mark it seen
+        seen[i][j]=true;
+        //toughest part , to calculate area , we add 1 each time we recurse and find a 1
+        return (1+area(grid,i-1,j)+area(grid,i+1,j)+area(grid,i,j-1)+area(grid,i,j+1));
+    }
+}
