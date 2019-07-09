@@ -1,0 +1,16 @@
+//It is a dynamic Problem , we store the sum till the ith element in dp[i] (BASE CASE , dp[0]=nums[0]) , then finally the maximum of the dp array is the maximum sum
+//this will take O(N) extra space and time O(N) , in order to make space O(1) , instead of using a dp array , we take a variable maxEnding here , since we are only concered with the sum till the previous element
+class MaxSubArray {
+    public int solution(int[] nums) {
+    int maxSum=Integer.MIN_VALUE;
+        int maxEndingHere;  //int[] dp=new int[nums.length];
+        maxEndingHere=nums[0];  //dp[0]=nums[0];
+         maxSum=A[0];  
+        for(int i=1;i<nums.length;i++){
+            maxEndingHere=Math.max(maxEndingHere+nums[i],nums[i]);  //dp[i]=Math.max(dp[i-1]+nums[i],nums[i]);
+            //Finding maximum among the dp array
+            maxSum=Math.max(maxSum,maxEndingHere);    //maxSum=Math.max(maxSum,dp[i]);
+        }
+        return maxSum;
+}
+}
