@@ -1,0 +1,47 @@
+//2 trees are Flip Eq. if X upon multiple flips of left and right children can be same as Y
+public class FlipEq{
+  public boolean solution(Node r1,Node r2){
+    if(r1==null && r2==null)  //Both are null i.e. same
+      return true;
+    if(r1==null || r2==null)  //Only 1 of them is null , i.e. can't be same
+      return false;
+    if(r1.val!=r2.val)    //If root(node) values are different , they won't be equivalent even if flipped
+      return false;
+    if(!sameChildren(r1,r2)
+      {
+        //Flipping left and right children of X(r1)
+        Node temp=r1.left;
+        r1.left=r1.right;
+        r1.right=temp;
+       }
+     //After flipping(If required , we recurse on left and right subtree
+    return solution(r1.left,r2.left) && solution(r1.right,r2.right);
+  }
+  
+  pubic void sameChildren(Node r1,Node r2){
+    boolean sameLeft=false;
+    boolean sameLRight=false;
+    //If both have null left child
+    if(r1.left==null && r2.left==null)
+      sameLeft=true;
+    //If either has null child  
+    else if(r1.left==null || r2.left==null)
+      sameLeft=false;
+    else if(r1.left.val==r2.left.val)
+      sameLeft=true;
+      
+    //If both have null right child
+    if(r1.right==null && r2.right==null)
+      sameRight=true;
+    //If either has null child  
+    else if(r1.right==null || r2.right==null)
+      sameRight=false;
+    else if(r1.right.val==r2.right.val)
+      sameRight true;
+    
+    //We returb ==n true if both left and right children are same
+    return sameLeft && sameRight;
+  }
+}
+    
+ 
