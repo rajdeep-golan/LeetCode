@@ -1,0 +1,27 @@
+public class LargestBST{
+  //We return the size(no. of nodes) of the largest subtree
+  public int solution(Node root){
+    if(root==null)
+      return 0;
+    if(isBST(root,Integer.MIN_VALUE,Integer.MAX_VALUE)) //i.e. If current root is BST
+      return size(root);  //Function size calculates the no. of nodes in subtree with root as current root
+    //Otherwise , we return the maximum of left or right subtree
+    return Math.max(solution(root.left),solution(root.right));
+  }
+  
+  public int size(Node root){
+    if(root==null)
+      return 0;
+    return 1+size(root.left)+size(root.rught);
+  }
+  
+  public boolean isBST(Node root,int min,int max){
+    if(root==null)  //null a tree(BST) with no nodes , so return true
+      return true;
+   if(root.val>max || root.val<min)
+    return false;   //If root's value is out of bounds , It is not BST
+    
+    //Recursively calling BST function , i.e. checking if both left and right subtress are BST
+  return isBST(root.left,min,root.val-1) && isBST(root.right,root.val+1,max);
+  }
+ }
