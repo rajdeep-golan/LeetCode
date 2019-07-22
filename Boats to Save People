@@ -1,0 +1,22 @@
+class NumRescueBoats {
+//We are supposed to return the minimum number of boats required to take people
+    public int solution(int[] people, int limit) {
+    //We sort the array
+        Arrays.sort(people);
+        //Now we take 2 pointers , 1st and last . We can take atmost 2 people , so we compare the 1st and last person. If their combined weight < limit , we carry both of them , otherwise we carry only the last(heavier person)
+        int i=0,j=people.length-1;
+        int count=0;
+        while(i<=j){
+            if(people[i]+people[j]<=limit){
+            //We are taking the lightest and heaviest person , we increment i and decrement j so that we don't consider these 2 people again
+                i++;
+                j--;
+            }
+            else  // i.e. their combined weight is more than limit if boat so we carry only the heavier person
+                j--;
+           //In any case , we are using only 1 boat     
+            count++;
+        }
+        return count;
+    }
+}
