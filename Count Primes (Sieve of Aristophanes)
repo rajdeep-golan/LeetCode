@@ -1,0 +1,20 @@
+class CountPrimes {
+
+// You can follow this link if you face any problem in explanation https://www.youtube.com/watch?v=UMVa5fRKC8I
+    public int solution(int n) {
+    //This boolean array is initally all false , representing that all numbers are prime . The moment we find that a number is not prime , we make it true
+        boolean p[]=new boolean[n];
+        for(int i=2;i*i<n;i++)
+            if(!p[i]){
+                for(int j=i;j*i<n;j++)
+                    p[i*j]=true;
+            }
+            
+            //True means it is not primes (here we do not consider 0 and 1 , our discussion starts from 2 , i.e. all false are prime
+        int count=0;
+        for(int i=2;i<n;i++)
+            if(!p[i])
+                count++;
+        return count;
+    }
+}
