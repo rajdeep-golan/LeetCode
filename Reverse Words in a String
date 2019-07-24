@@ -1,0 +1,14 @@
+class ReverseWords {
+    public String solution(String s) {
+
+        StringBuilder ans=new StringBuilder();
+       
+        String[] k=s.trim().split("\\s+");
+        
+        //      \s is the regex(regular expression) for whitespaces , \ is the escape character hence \\s , + is used for multiple white spaces
+        for(int i=k.length-1;i>0;i--)
+            ans.append(k[i]).append(" ");
+        return ans.append(k[0]).toString();
+   
+    }
+}
