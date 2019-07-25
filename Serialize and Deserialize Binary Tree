@@ -1,0 +1,56 @@
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+ 
+ 
+ // We are doing a pre-order traversal and making strings like "1,2,3,null" for serialising Algo
+ //For deserialising Algo , we take a queue and construct our Tree
+ 
+ 
+ 
+public class Codec {
+
+    // Encodes a tree to a single string.
+    public String serialize(TreeNode root) {
+        StringBuilder s=new StringBuilder();
+        makeS(root,s);
+        return s.toString();
+    }
+    void makeS(TreeNode root,StringBuilder s){
+        if(root==null)
+            s.append("null").append(",");
+        else{
+            s.append(root.val).append(",");
+            makeS(root.left,s);
+            makeS(root.right,s);
+        }
+    }
+
+    // Decodes your encoded data to tree.
+    public TreeNode deserialize(String data) {
+       Queue<String> q=new LinkedList();
+        q.addAll(Arrays.asList(data.split(",")));
+        
+        return getS(q);
+    }
+    TreeNode getS(Queue<String> q){
+        String s=q.poll();
+        if(s.equals("null"))
+            return null;
+            
+        TreeNode node=new TreeNode(Integer.parseInt(s));
+        node.left=getS(q);
+        node.right=getS(q);
+        return node;
+    }
+}
+
+// Your Codec object will be instantiated and called as such:
+// Codec codec = new Codec();
+// codec.deserialize(codec.serialize(root));
