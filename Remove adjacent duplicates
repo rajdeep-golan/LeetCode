@@ -1,0 +1,33 @@
+class RemoveDuplicates {
+    public String solution(String S) {
+        Stack<Character> s=new Stack();
+        for(char c:S.toCharArray()){
+          if(!s.isEmpty())
+              if(c==s.peek())
+                  s.pop();
+            else
+                s.push(c);
+           else
+               s.push(c); 
+        }
+        String answer=new String();
+        while(!s.isEmpty())
+        {
+            answer=s.pop()+answer;
+        }
+        return answer;
+    }
+    
+    //Using array as a stack
+    public String solution(String S) {
+        char[] stack=new char[S.length()];
+        int top=0;
+        for(char c:S.toCharArray()){
+            if(top!=0 && stack[top-1]==c)
+                top--;
+            else
+                stack[top++]=c;
+        }
+        return new String(stack,0,top);
+    }
+}
