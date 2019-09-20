@@ -1,0 +1,18 @@
+public class IslandPerimeter{
+  public int solution(int[][] grid) {
+        int perimeter=0;
+        for(int i=0;i<grid.length;i++){
+            for(int j=0;j<grid[i].length;j++){
+              //When we see a 1 , we add 4 , and decrease 2 if we have a 1 on top(i-1) or left(j-1) 
+                if(grid[i][j]==1){
+                    perimeter+=4;
+                    if(i!=0 && grid[i-1][j]==1)
+                        perimeter-=2;
+                    if(j!=0 && grid[i][j-1]==1)
+                        perimeter-=2;
+                }
+            }
+        }
+        return perimeter;
+    }
+}
