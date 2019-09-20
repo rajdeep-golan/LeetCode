@@ -1,0 +1,21 @@
+class CountCharacters {
+    public int solution(String[] words, String chars) {
+        int[] count=new int[26];
+        int sumOfValidWordsLength=0;
+        for(char c:chars.toCharArray())
+            count[c-'a']++;
+        for(String word:words)
+        {    int[] temp_count=Arrays.copyOf(count,count.length);
+            int valid_chars=0; 
+            for(char c:word.toCharArray()){
+                    if(temp_count[c-'a']>0){
+                        temp_count[c-'a']--;
+                        valid_chars++;
+                    }
+                }
+         if(valid_chars==word.length())
+             sumOfValidWordsLength+=word.length();
+        }
+        return sumOfValidWordsLength;
+    }
+}
