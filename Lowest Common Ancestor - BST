@@ -23,7 +23,9 @@ class Solution {
 	*/
 	public static Node lca(Node root, int v1, int v2) {
       	// Write your code here.
-           if(v1 > root.data && v2 > root.data) // Both are on the Right SubTree
+	   if(root==null)
+		return root;
+	  if(v1 > root.data && v2 > root.data) // Both are on the Right SubTree
             return lca(root.right,v1,v2);
           if(v1 < root.data && v2 < root.data)  // Both are on the left SubTree
             return lca(root.left,v1,v2);
@@ -59,6 +61,7 @@ class Solution {
       	int v2 = scan.nextInt();
         scan.close();
         Node ans = lca(root,v1,v2);
-        System.out.println(ans.data);
+	if(ans!=null)
+       	 System.out.println(ans.data);
     }	
 }
