@@ -1,0 +1,40 @@
+class Solution {
+    public List<String> letterCombinations(String digits) {
+        List<String> result = new ArrayList<>();
+        if(digits == null || digits.length() == 0)
+            return result;
+        HashMap<Character,String> codes = new HashMap<>();
+     List<Character> a = new ArrayList<>();
+        codes.put('2',"abc");
+        
+        codes.put('3',"def");
+        codes.put('4',"ghi");
+        codes.put('5',"jkl");
+        codes.put('6',"mno");
+        codes.put('7',"pqrs");
+        codes.put('8',"tuv");
+        codes.put('9',"wxyz");
+        
+        
+        letterCombinationsRecursion(result,codes,digits,"",0);
+        return result;
+    }
+    void letterCombinationsRecursion(List<String> result, 
+                                     HashMap<Character,String> codes,
+                                     String digits, String current , int index)
+    {
+        if(index == digits.length()){
+            result.add(current);
+            return;
+        }
+        else{
+            
+            char c = digits.charAt(index);
+                for(char code: codes.get(c).toCharArray()){
+                  letterCombinationsRecursion(result,codes,digits,current+code,index+1);
+                }
+            }
+            
+        }
+    }
+
