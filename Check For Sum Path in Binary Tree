@@ -38,7 +38,7 @@ public class CheckPath{
         tree.add(root.right);
         intStack.add(root.right.val);
         }
-      if(root.left==nul && root.right==null && cur_sum==0)
+      if(root.left==null && root.right==null && cur_sum==0)
         return true;
       }
      return false;
