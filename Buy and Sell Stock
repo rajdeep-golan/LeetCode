@@ -1,4 +1,19 @@
+class BuySellStock1 {
+    //Can sell and buy only once
+    public int maxProfit(int[] prices) {
+        int min_price = Integer.MAX_VALUE;
+        int profit = 0;
+        for(int i: prices){
+            if(i<min_price)
+                min_price = i;
+            else if(i-min_price > profit)
+                profit = i - min_price;
+        }
+        return profit;
+    }
+}
 class BuySellStock2 {
+    //Can sell and buy as many times
     public int maxProfit(int[] prices) {
         if(prices == null || prices.length == 0)
             return 0;
