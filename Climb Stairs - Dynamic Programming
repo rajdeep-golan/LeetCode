@@ -1,0 +1,12 @@
+class Solution {
+  // Given n number of steps , find total no. of ways to climb to top if we can either climb 1 step or 2 step at a time
+    public int climbStairs(int n) {
+        int[] dp=new int[n+1]; //array to store the results
+        dp[0]=1;    // 1 way to climb 0 step = don't climb
+        dp[1]=1;    // 1 way to climb 1 step = take 1 step
+        for(int i=2;i<=n ;i++){
+            dp[i] = dp[i-1] + dp[i-2];  // we can come to current step(i) from either previous(i-1) step or 2 previous steps (i-2)
+        }
+        return dp[n];
+    }
+}
