@@ -1,0 +1,46 @@
+class Solution {
+    public boolean canCross(int[] stones) {
+        for(int i=3;i<stones.length;i++){
+            if(stones[i]>stones[i-1]*2)
+                return false;
+        }
+        
+        HashSet<Integer> validPositions = new HashSet<>();
+        for(int stone : stones)
+            validPositions.add(stone);
+        Stack<Integer> jumps =new Stack<>();
+        Stack<Integer> positions =new Stack<>();
+        
+        positions.push(0);    //Initially at 0
+        jumps.push(0);   //Initially took 0 jump to reach to 0th position
+        
+        int lastStone = stones[stones.length-1];
+        
+        HashSet<List<Integer>> visited = new HashSet<>();
+        
+        
+        while(!positions.isEmpty()){
+            int position = positions.pop();
+            int jump = jumps.pop();
+           
+            for(int i=jump-1;i<= jump+1;i++){
+                if(i<=0)    //not allowing to jump and stay on same position
+                    continue;
+                int newPosition = position + i;
+                
+                List<Integer> target = new ArrayList<>();
+                target.add(newPosition);
+                target.add(i);
+                if(newPosition == lastStone)
+                    return true;
+                else if(validPositions.contains(newPosition) && !visited.contains(target))
+                {
+                    positions.push(newPosition);
+                    jumps.push(i);
+                    visited.add(target);
+                }
+            }
+        }
+        return false;
+    }
+}
