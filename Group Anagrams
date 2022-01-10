@@ -13,9 +13,11 @@ class Solution {
                 map.put(sorted,new ArrayList<>());
             map.get(sorted).add(s);
         }
-        for(String key: map.keySet()){
-            result.add(map.get(key));
-        }
+       // for(String key: map.keySet()){
+       //     result.add(map.get(key));
+       // }
+       
+        result.addAll(map.values());
         return result;
     }
 }
