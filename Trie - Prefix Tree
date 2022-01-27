@@ -1,0 +1,51 @@
+class Trie {
+    Node root;
+    class Node{
+    Map<Character,Node> map;
+    boolean isWord;
+        public Node(){
+            map = new HashMap<>();
+            isWord = false;
+        }
+    }
+    public Trie() {
+       root = new Node();
+    }
+    
+    public void insert(String word) {
+        Node node = root;
+        for(char c:word.toCharArray()){
+            node.map.put(c,node.map.getOrDefault(c,new Node()));
+            node = node.map.get(c);
+        }
+        node.isWord = true;
+    }
+    
+    public boolean search(String word) {
+        Node current = root;
+        for(char c:word.toCharArray()){
+            if(!current.map.containsKey(c))
+                return false;
+            current = current.map.get(c);
+        }
+        return current.isWord;
+    }
+    
+    public boolean startsWith(String prefix) {
+         Node current = root;
+        for(char c:prefix.toCharArray()){
+            if(!current.map.containsKey(c))
+                return false;
+            current = current.map.get(c);
+        }
+        return true;
+    }
+}
+
+/**
+ * Your Trie object will be instantiated and called as such:
+ * Trie obj = new Trie();
+ * obj.insert(word);
+ * boolean param_2 = obj.search(word);
+ * boolean param_3 = obj.startsWith(prefix);
+ */
