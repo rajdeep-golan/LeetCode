@@ -1,0 +1,29 @@
+class Solution {
+    public int longestIncreasingPath(int[][] matrix) {
+        int max = Integer.MIN_VALUE;
+        int [][] dp= new int[matrix.length][matrix[0].length];
+        for(int i=0;i<matrix.length;i++)
+            for(int j=0;j<matrix[i].length;j++)
+                max= Math.max(max,dfs(matrix,i,j,dp,matrix[i][j],1));
+        return max;
+    }
+    int dirs[][]= {{0,1},{1,0},{-1,0},{0,-1}};
+    private int dfs(int[][] matrix,int i,int j, int[][] dp,int n,int first){
+        if(i<0 || i>=dp.length || j<0 || j>=dp[i].length)
+            return 0;
+        if(dp[i][j]!=0)
+            return dp[i][j];
+        int m=0;
+        for(int[] dir:dirs){
+            int x=i+dir[0] , y=j+dir[1];
+            if(x>-1 && y>-1 && x<dp.length && y<dp[x].length && matrix[x][y]>matrix[i][j]){
+                int l = dfs(matrix,x,y,dp,matrix[i][j],0);
+                m = Math.max(l,m);
+            }
+        }
+        
+        dp[i][j]=m+1;
+        return dp[i][j];
+   
+    }
+}
