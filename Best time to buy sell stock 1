@@ -1,0 +1,24 @@
+class Solution {
+    public int maxProfit(int[] prices) {
+        int dp[][]= new int[prices.length][2];
+        for(int i=0;i<prices.length;i++)
+        {   dp[i][0]=Integer.MIN_VALUE;
+         dp[i][1]=Integer.MIN_VALUE;}
+        return helper(prices,0,0,0,dp);
+    }
+    public int helper(int[] prices,int time, int stock,int count,int[][] dp){
+        if(time>=prices.length || count==1)
+            return 0;
+        if(dp[time][stock]!=Integer.MIN_VALUE)
+            return dp[time][stock];
+        int least = Integer.MIN_VALUE;
+        int buy=least,sell=least,hold=least;
+        if(stock==0)
+        buy = (-prices[time])+helper(prices,time+1,stock+1,count,dp);
+        if(stock==1)
+        sell = (prices[time])+helper(prices,time+1,stock-1,count+1,dp);
+        hold = helper(prices,time+1,stock,count,dp);
+        dp[time][stock]=(int) Math.max(Math.max(buy,sell),hold);
+        return dp[time][stock];
+    }
+}
