@@ -1,0 +1,28 @@
+class Solution {
+    public List<String> generateParenthesis(int n) {
+        List<String> result = new ArrayList<>();
+        help(result,n,0,0,new StringBuilder());
+        return result;
+    }
+    private void help(List<String> result , int n , int open,int close,StringBuilder curStr){
+        if(curStr.length()==2*n){
+            result.add(new String(curStr));
+            return;
+        }
+        if(open <n){
+            curStr.append("(");
+            help(result,n,open+1,close,curStr);
+            
+            curStr.deleteCharAt(curStr.length()-1);
+        }
+        if(close<open){
+            curStr.append(")");
+            help(result,n,open,close+1,curStr);
+            curStr.deleteCharAt(curStr.length()-1);
+        }
+        
+    }
+}
+
+// Time Complexity : (4^n)/(n^(1/2))
+// Space Complexity : (4^n)/(n^(1/2))
